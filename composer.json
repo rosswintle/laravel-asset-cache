@@ -9,7 +9,10 @@
             "email": "ross@oikos.org.uk"
         }
     ],
-    "require": {},
+    "require": {
+        "php": "^7.1.3",
+        "laravel/framework": "^5.7|^6.0"
+    },
     "autoload": {
         "psr-4":  {
             "RossWintle\\LaravelJPM\\": "src/"
@@ -21,6 +24,17 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5"
+        "phpunit/phpunit": "^8.5",
+        "orchestra/testbench": "~4.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RossWintle\\LaravelJPM\\LaravelJPMServiceProvider"
+            ],
+            "aliases": {
+                "LaravelJPM": "RossWintle\\LaravelJPM\\Facades\\LaravelJPM"
+            }
+        }
     }
 }

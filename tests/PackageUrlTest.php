@@ -5,7 +5,7 @@ namespace RossWintle\LaravelJPM\Tests;
 use PHPUnit\Framework\TestCase;
 use RossWintle\LaravelJPM\LaravelJPM;
 
-class LaravelJPMHelperTest extends TestCase
+class PackageUrlTest extends TestCase
 {
 
 	/** @test */

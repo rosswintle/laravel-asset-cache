@@ -11,9 +11,23 @@ class LaravelJPM {
 	public function packageUrl(
 		string $packageName,
 		string $versionConstraint='', 
-		string $file='') : string
+		string $filename='') : string
 	{
-		// We will build up a pattern for use in sprintf
+		return sprintf(
+			$this->urlPattern($packageName, $versionConstraint, $filename),
+			$packageName,
+			$this->normaliseVersionConstraint($versionConstraint),
+			$this->normaliseFilename($filename));
+	}
+
+	/**
+	 * Build us a pattern for use in sprintf'ing the URL
+	 */
+	public function urlPattern(
+		string $packageName,
+		string $versionConstraint='', 
+		string $filename='') : string
+	{
 		$urlPattern = "https://cdn.jsdelivr.net/npm/%s";
 
 		if (!empty($versionConstraint)) {
@@ -24,15 +38,11 @@ class LaravelJPM {
 			$urlPattern .= '%s';
 		}
 
-		if (!empty($file)) {
+		if (!empty($filename)) {
 			$urlPattern .= '/%s';
 		}
 
-		return sprintf(
-			$urlPattern,
-			$packageName,
-			$this->normaliseVersionConstraint($versionConstraint),
-			$this->normaliseFilename($file));
+		return $urlPattern;
 	}
 
 	public function normaliseVersionConstraint(string $versionConstraint) : string {
