@@ -18,12 +18,11 @@ class LaravelJPMServiceProvider extends ServiceProvider
 
 	public function boot()
 	{
-		// TODO: Figure out blade directive - they 
 		// For testing see the example at https://github.com/appstract/laravel-blade-directives/blob/master/tests/DataAttributesTest.php
 		Blade::directive('jscript', function($expression) {
 			$parameters = BladeExpressionParser::parse($expression);
-			$packageUrl = \RossWintle\LaravelJPM\Facades\LaravelJPM::packageUrl($parameters[0], $parameters[1], $parameters[2]);
-			return "<?php echo $packageUrl; ?>";
+			$packageUrl = \RossWintle\LaravelJPM\Facades\LaravelJPM::packageUrl($parameters[0], $parameters[1] ?? '', $parameters[2] ?? '');
+			return "<?php echo \"$packageUrl\"; ?>";
 		});
 	}
 }
