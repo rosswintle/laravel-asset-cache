@@ -1,0 +1,26 @@
+{
+    "name": "rosswintle/laravel-javascript-package-manager",
+    "description": "Package manager for inclusion of non-hierarchical JavaScript packages in Laravel projects",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ross Wintle",
+            "email": "ross@oikos.org.uk"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4":  {
+            "RossWintle\\LaravelJPM\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4":  {
+            "RossWintle\\LaravelJPM\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    }
+}
