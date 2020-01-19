@@ -3,6 +3,7 @@
 namespace RossWintle\LaravelJPM;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Cache;
 
 class PackageCache
 {
@@ -18,26 +19,32 @@ class PackageCache
 	public function cachedUrl(): string
 	{
 		// If package is not cached or cache needs updating
-		// if ()
+		if (! $this->isCached()) {
 			//   cache package
 			$this->refreshCachedFile();
-		// }
+		}
 
 		// return cached package url  
-		return asset('storage/' . $this->packageName);
+		return asset('storage/' . $this->packageName . '.js');
 	}
 
-	public function isCached(): boolean
+	public function cacheKey(): string
 	{
-		return true;
+		return 'LaravelJPM-' . $this->packageName . '-cached';
+	}
+
+	public function isCached(): bool
+	{
+		return Cache::has($this->cacheKey());
 	}
 
 	public function refreshCachedFile(): void
 	{
 		$contents = file_get_contents($this->remotePackageUrl);
 
-		Storage::disk('local')->put($this->packageName, $contents);
+		Storage::disk('public')->put($this->packageName . '.js', $contents);
 
 		// Update cache name and timestamp
+		Cache::put($this->cacheKey(), time(), now()->addHours(1));
 	}
 }
