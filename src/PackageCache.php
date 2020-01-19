@@ -25,6 +25,7 @@ class PackageCache
 		}
 
 		// return cached package url  
+		// TODO : Make work for all files extensions - needs some re-thinking
 		return asset('storage/' . $this->packageName . '.js');
 	}
 
@@ -42,6 +43,7 @@ class PackageCache
 	{
 		$contents = file_get_contents($this->remotePackageUrl);
 
+		// TODO : Make work for all files extensions - needs some re-thinking
 		Storage::disk('public')->put($this->packageName . '.js', $contents);
 
 		// Update cache name and timestamp
