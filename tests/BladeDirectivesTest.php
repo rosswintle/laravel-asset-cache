@@ -10,7 +10,7 @@ class BladeDirectivesTest extends BladeTestCase
 	{
         $blade = "@jscript('jquery', '3.2.1', 'dist/jquery.min.js')";
 
-        $expected = '"http://localhost/storage/jquery"';
+        $expected = '"<script src=\"" . \RossWintle\LaravelJPM\Facades\LaravelJPM::cachedPackageUrl(!';
 
         $this->assertStringContainsString($expected, $this->blade->compileString($blade));
 	}

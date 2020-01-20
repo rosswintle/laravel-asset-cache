@@ -22,7 +22,7 @@ class LaravelJPMServiceProvider extends ServiceProvider
 		Blade::directive('jscript', function($expression) {
 			$parameters = BladeExpressionParser::parse($expression);
 			$packageUrl = \RossWintle\LaravelJPM\Facades\LaravelJPM::cachedPackageUrl($parameters[0], $parameters[1] ?? '', $parameters[2] ?? '');
-			return "<?php echo \"$packageUrl\"; ?>";
+			return '<?php echo "<script src=\\"" . \RossWintle\LaravelJPM\Facades\LaravelJPM::cachedPackageUrl(' . $expression . ') . "\\"></script>" ?>';
 		});
 	}
 }
