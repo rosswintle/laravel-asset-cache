@@ -4,17 +4,21 @@ namespace RossWintle\LaravelJPM;
 
 class LaravelJPM {
 
-// TODO: Grab files, cache, and spit out the correct URL
-// Can we get correct URL in a generic PHP way? Will have to use Laravel
-// Caching so we WILL be dependent on Laravel.
-
+	/**
+	 * Generate the URL of a cached package (and cache it or update the cached
+	 * file if necessary along the way)
+	 *
+	 * Note: We require a filename here because we need to cache the file with the
+	 * correct filename.
+	 */
 	public function cachedPackageUrl(
 		string $packageName,
-		string $versionConstraint='', 
-		string $filename='') : string
+		string $versionConstraint, 
+		string $filename) : string
 	{
 		return (new PackageCache(
 						$packageName,
+						$filename,
 						$this->remotePackageUrl($packageName, $versionConstraint, $filename)
 				))->cachedUrl();
 	}

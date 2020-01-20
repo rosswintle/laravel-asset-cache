@@ -8,25 +8,24 @@ use Illuminate\Support\Facades\Cache;
 class PackageCache
 {
 	public $packageName;
+	public $fileName;
 	public $remotePackageUrl;
 
-	public function __construct(string $packageName, string $remotePackageUrl)
+	public function __construct(string $packageName, string $fileName, string $remotePackageUrl)
 	{
 		$this->packageName = $packageName;
+		$this->fileName = trim($fileName, '/');
 		$this->remotePackageUrl = $remotePackageUrl;
 	}
 
 	public function cachedUrl(): string
 	{
-		// If package is not cached or cache needs updating
 		if (! $this->isCached()) {
 			//   cache package
 			$this->refreshCachedFile();
 		}
 
-		// return cached package url  
-		// TODO : Make work for all files extensions - needs some re-thinking
-		return asset('storage/' . $this->packageName . '.js');
+		return asset('storage/' . $this->fileName);
 	}
 
 	public function cacheKey(): string
@@ -43,8 +42,7 @@ class PackageCache
 	{
 		$contents = file_get_contents($this->remotePackageUrl);
 
-		// TODO : Make work for all files extensions - needs some re-thinking
-		Storage::disk('public')->put($this->packageName . '.js', $contents);
+		Storage::disk('public')->put($this->fileName, $contents);
 
 		// Update cache name and timestamp
 		Cache::put($this->cacheKey(), time(), now()->addHours(1));
