@@ -20,7 +20,7 @@ class LaravelJPMServiceProvider extends ServiceProvider
 	{
 		// For testing see the example at https://github.com/appstract/laravel-blade-directives/blob/master/tests/DataAttributesTest.php
 		Blade::directive('jscript', function($expression) {
-			return '<?php echo "<script src=\\"" . \RossWintle\LaravelJPM\Facades\LaravelJPM::cachedPackageUrl(' . $expression . ') . "\\"></script>" ?>';
+			return '<?php echo "<script src=\\"" . \RossWintle\LaravelJPM\Facades\LaravelJPM::cachedPackageUrl(' . $expression . ') . "\\"></script>\\n" ?>';
 		});
 	}
 }
