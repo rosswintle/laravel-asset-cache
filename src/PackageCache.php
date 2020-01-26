@@ -16,16 +16,25 @@ class PackageCache
 	{
 		$this->packageName = $packageName;
 		$this->version = $version;
-		$this->filename = $this->constructFilenameWithVersion($filename, $version);
+		$this->filename = $this->constructFilenameWithPathAndVersion($packageName, $filename, $version);
 		$this->remotePackageUrl = $remotePackageUrl;
 	}
 
-	public function constructFilenameWithVersion($filename, $version)
+	public function constructFilenameWithPathAndVersion(
+		string $packageName,
+		string $filename,
+		string $version): string
 	{
+		// Trim the slash is there is one
+		$filename = trim($filename, '/');
+		// Split at dots
 		$parts = explode('.', $filename);
+		// Remember the extension
 		$extension = array_pop($parts);
+		// Add the version and extension back on
 		array_push($parts, $version, $extension);
-		return implode('.', $parts);
+		// Construct the path and filename from the parts
+		return $packageName . '/' . implode('.', $parts);
 	}
 
 	public function cachedUrl(): string
@@ -40,7 +49,7 @@ class PackageCache
 
 	public function cacheKey(): string
 	{
-		return 'LaravelJPM-' . $this->packageName . '-cached';
+		return 'LaravelJPM-' . $this->filename . '-cached';
 	}
 
 	public function isCached(): bool
