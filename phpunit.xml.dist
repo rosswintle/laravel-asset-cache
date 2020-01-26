@@ -10,7 +10,7 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="LaravelJPM Test Suite">
+        <testsuite name="LaravelAssetCache Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

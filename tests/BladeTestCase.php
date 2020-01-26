@@ -1,8 +1,8 @@
 <?php
 
-namespace RossWintle\LaravelJPM\Tests;
+namespace RossWintle\LaravelAssetCache\Tests;
 
-use RossWintle\LaravelJPM\Tests\Concerns\CreatesApplication;
+use RossWintle\LaravelAssetCache\Tests\Concerns\CreatesApplication;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 class BladeTestCase extends BaseTestCase

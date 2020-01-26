@@ -1,23 +1,23 @@
 <?php
 
-namespace RossWintle\LaravelJPM;
+namespace RossWintle\LaravelAssetCache;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cache;
 
-class PackageCache
+class AssetCache
 {
 	public $packageName;
 	public $version;
 	public $filename;
-	public $remotePackageUrl;
+	public $remoteAssetUrl;
 
-	public function __construct(string $packageName, string $filename, string $version, string $remotePackageUrl)
+	public function __construct(string $packageName, string $filename, string $version, string $remoteAssetUrl)
 	{
 		$this->packageName = $packageName;
 		$this->version = $version;
 		$this->filename = $this->constructFilenameWithPathAndVersion($packageName, $filename, $version);
-		$this->remotePackageUrl = $remotePackageUrl;
+		$this->remoteAssetUrl = $remoteAssetUrl;
 	}
 
 	public function constructFilenameWithPathAndVersion(
@@ -40,7 +40,7 @@ class PackageCache
 	public function cachedUrl(): string
 	{
 		if (! $this->isCached()) {
-			//   cache package
+			//   cache asset
 			$this->refreshCachedFile();
 		}
 
@@ -49,7 +49,7 @@ class PackageCache
 
 	public function cacheKey(): string
 	{
-		return 'LaravelJPM-' . $this->filename . '-cached';
+		return 'LAC-' . $this->filename . '-cached';
 	}
 
 	public function isCached(): bool
@@ -59,7 +59,7 @@ class PackageCache
 
 	public function refreshCachedFile(): void
 	{
-		$contents = file_get_contents($this->remotePackageUrl);
+		$contents = file_get_contents($this->remoteAssetUrl);
 
 		if (false === $contents) {
 			// Download failed

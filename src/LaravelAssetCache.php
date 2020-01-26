@@ -1,34 +1,34 @@
 <?php
 
-namespace RossWintle\LaravelJPM;
+namespace RossWintle\LaravelAssetCache;
 
-class LaravelJPM {
+class LaravelAssetCache {
 
 	/**
-	 * Generate the URL of a cached package (and cache it or update the cached
+	 * Generate the URL of a cached asset (and cache it or update the cached
 	 * file if necessary along the way)
 	 *
 	 * Note: We require a filename here because we need to cache the file with the
 	 * correct filename.
 	 */
-	public function cachedPackageUrl(
+	public function cachedAssetUrl(
 		string $packageName,
 		string $versionConstraint, 
 		string $filename) : string
 	{
-		return (new PackageCache(
+		return (new AssetCache(
 						$packageName,
 						$filename,
 						$versionConstraint,
-						$this->remotePackageUrl($packageName, $versionConstraint, $filename)
+						$this->remoteAssetUrl($packageName, $versionConstraint, $filename)
 				))->cachedUrl();
 	}
 
 	/**
-	 * Generate the URL for a package given its NPM package name
+	 * Generate the URL for an asset given its NPM package name
 	 * and, optionally, a version constraint and a filename
 	 */
-	public function remotePackageUrl(
+	public function remoteAssetUrl(
 		string $packageName,
 		string $versionConstraint='', 
 		string $filename='') : string

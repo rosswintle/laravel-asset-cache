@@ -1,6 +1,6 @@
 <?php
 
-namespace RossWintle\LaravelJPM\Tests;
+namespace RossWintle\LaravelAssetCache\Tests;
 
 class BladeDirectivesTest extends BladeTestCase
 {
@@ -10,7 +10,7 @@ class BladeDirectivesTest extends BladeTestCase
 	{
         $blade = "@jscript('jquery', '3.2.1', 'dist/jquery.min.js')";
 
-        $expected = '"<script src=\"" . \RossWintle\LaravelJPM\Facades\LaravelJPM::cachedPackageUrl(\'jquery\', \'3.2.1\', \'dist/jquery.min.js\') . "\"></script>';
+        $expected = '"<script src=\"" . \RossWintle\LaravelAssetCache\Facades\LaravelAssetCache::cachedAssetUrl(\'jquery\', \'3.2.1\', \'dist/jquery.min.js\') . "\"></script>';
 
         $this->assertStringContainsString($expected, $this->blade->compileString($blade));
 	}

@@ -1,6 +1,6 @@
 {
-    "name": "rosswintle/laravel-javascript-package-manager",
-    "description": "Package manager for inclusion of non-hierarchical JavaScript packages in Laravel projects",
+    "name": "rosswintle/laravel-asset-cache",
+    "description": "Asset cache for inclusion of non-hierarchical JavaScript packages in Laravel projects",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -15,12 +15,12 @@
     },
     "autoload": {
         "psr-4":  {
-            "RossWintle\\LaravelJPM\\": "src/"
+            "RossWintle\\LaravelAssetCache\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4":  {
-            "RossWintle\\LaravelJPM\\Tests\\": "tests/"
+            "RossWintle\\LaravelAssetCache\\Tests\\": "tests/"
         }
     },
     "require-dev": {
@@ -30,10 +30,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "RossWintle\\LaravelJPM\\LaravelJPMServiceProvider"
+                "RossWintle\\LaravelAssetCache\\LaravelAssetCacheServiceProvider"
             ],
             "aliases": {
-                "LaravelJPM": "RossWintle\\LaravelJPM\\Facades\\LaravelJPM"
+                "LaravelAssetCache": "RossWintle\\LaravelAssetCache\\Facades\\LaravelAssetCache"
             }
         }
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace RossWintle\LaravelJPM\Tests\Concerns;
+namespace RossWintle\LaravelAssetCache\Tests\Concerns;
 
 use Illuminate\Support\Facades\View;
 
@@ -9,13 +9,13 @@ trait CreatesApplication
     protected function getPackageProviders($app)
     {
         return [
-            \RossWintle\LaravelJPM\LaravelJPMServiceProvider::class
+            \RossWintle\LaravelAssetCache\LaravelAssetCacheServiceProvider::class
         ];
     }
     protected function getPackageAliases($app)
 	{
     	return [
-        	'LaravelJPM' => RossWintle\LaravelJPM\Facades\LaravelJPM::class,
+        	'LaravelAssetCache' => RossWintle\LaravelAssetCache\Facades\LaravelAssetCache::class,
     	];
 	}
 }
