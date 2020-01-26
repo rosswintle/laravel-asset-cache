@@ -61,6 +61,11 @@ class PackageCache
 	{
 		$contents = file_get_contents($this->remotePackageUrl);
 
+		if (false === $contents) {
+			// Download failed
+			return;
+		}
+
 		Storage::disk('public')->put($this->filename, $contents);
 
 		// Update cache name and timestamp
