@@ -1,6 +1,6 @@
 {
     "name": "rosswintle/laravel-asset-cache",
-    "description": "Asset cache for inclusion of non-hierarchical JavaScript packages in Laravel projects",
+    "description": "Local caching for inclusion of non-hierarchical JavaScript and CSS assets in Laravel projects",
     "type": "library",
     "license": "MIT",
     "authors": [
