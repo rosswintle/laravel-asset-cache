@@ -8,14 +8,24 @@ use Illuminate\Support\Facades\Cache;
 class PackageCache
 {
 	public $packageName;
-	public $fileName;
+	public $version;
+	public $filename;
 	public $remotePackageUrl;
 
-	public function __construct(string $packageName, string $fileName, string $remotePackageUrl)
+	public function __construct(string $packageName, string $filename, string $version, string $remotePackageUrl)
 	{
 		$this->packageName = $packageName;
-		$this->fileName = trim($fileName, '/');
+		$this->version = $version;
+		$this->filename = $this->constructFilenameWithVersion($filename, $version);
 		$this->remotePackageUrl = $remotePackageUrl;
+	}
+
+	public function constructFilenameWithVersion($filename, $version)
+	{
+		$parts = explode('.', $filename);
+		$extension = array_pop($parts);
+		array_push($parts, $version, $extension);
+		return implode('.', $parts);
 	}
 
 	public function cachedUrl(): string
@@ -25,7 +35,7 @@ class PackageCache
 			$this->refreshCachedFile();
 		}
 
-		return asset('storage/' . $this->fileName);
+		return asset('storage/' . $this->filename);
 	}
 
 	public function cacheKey(): string
@@ -42,7 +52,7 @@ class PackageCache
 	{
 		$contents = file_get_contents($this->remotePackageUrl);
 
-		Storage::disk('public')->put($this->fileName, $contents);
+		Storage::disk('public')->put($this->filename, $contents);
 
 		// Update cache name and timestamp
 		Cache::put($this->cacheKey(), time(), now()->addHours(1));

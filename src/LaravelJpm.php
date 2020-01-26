@@ -19,6 +19,7 @@ class LaravelJPM {
 		return (new PackageCache(
 						$packageName,
 						$filename,
+						$versionConstraint,
 						$this->remotePackageUrl($packageName, $versionConstraint, $filename)
 				))->cachedUrl();
 	}
