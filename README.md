@@ -89,7 +89,7 @@ Be aware that package auto-discovery only works in Laravel 5.5 and higher. With 
 
 This is my first public package. All sorts of things could be wrong! Please be gentle.
 
-I've not tested this on huge files, it works for 73kb of compressed TailwindCSS.
+I've not tested this on huge files, but it works for 73kb of compressed TailwindCSS.
 
 Currently only works with npm packages, and pulls from cdn.jsdelivr.net
 
@@ -99,11 +99,13 @@ Downloads are currently synchronous so if an end user hits a cache operation the
 
 I'm not an expert tester, so I've tested some aspects of the package, but not the use of `Cache` and `Storage`.
 
-Feel free to contrinute tests if you know how.
+Feel free to contribute tests if you know how.
 
 ## Roadmap
 
+* Better use of Guzzle - can it send straight to the file?
 * Configuration for, for example, cache duration, or use fo different CDNs
 * Auto-discovery of "main" file for a package
-* automatic asynchronous cache refreshing (is this possible?)
+* Automatic asynchronous cache refreshing (is this possible?)
+* Add some slight randomisation (plus or minus a few minutes at random) of cache times so that one person doesn't get ALL the assets re-cached in one request.
 * cron job/cli for asynchronous cache refreshing 
