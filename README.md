@@ -8,7 +8,7 @@ they can be self hosted.
 Install the package with composer:
 
 ```
-composer require rosswintle/laravel-asset-cache -dev
+composer require rosswintle/laravel-asset-cache
 ```
 
 Cached assets are stored in and served from the `public` file storage "disk". You will need to have symlinked your `public/storage` directory to `storage/app/public` as per the [Laravel docs](https://laravel.com/docs/6.x/filesystem#the-public-disk) using:
