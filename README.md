@@ -3,7 +3,7 @@
 A Laravel package that automates downloading CSS and JS assets from CDNs so that
 they can be self hosted.
 
-### Installation
+## Installation
 
 Install the package with composer:
 
@@ -109,3 +109,8 @@ Feel free to contribute tests if you know how.
 * Automatic asynchronous cache refreshing (is this possible?)
 * Add some slight randomisation (plus or minus a few minutes at random) of cache times so that one person doesn't get ALL the assets re-cached in one request.
 * cron job/cli for asynchronous cache refreshing 
+
+## Credits
+
+* Thanks to [Marcel Pociot](https://twitter.com/marcelpociot) for his excellent [PHP Package Development](https://phppackagedevelopment.com/) course which helped me greatly in making this a package
+* Thanks to [Ben Furfie](https://twitter.com/frontendben), [Ryan Chandler](https://twitter.com/ryangjchandler) and [Duncan McClean](https://twitter.com/damcclean) for encouragement and feedback
