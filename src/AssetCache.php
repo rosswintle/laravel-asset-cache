@@ -4,6 +4,7 @@ namespace RossWintle\LaravelAssetCache;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cache;
+use GuzzleHttp\Client;
 
 class AssetCache
 {
@@ -59,12 +60,17 @@ class AssetCache
 
 	public function refreshCachedFile(): void
 	{
-		$contents = file_get_contents($this->remoteAssetUrl);
-
-		if (false === $contents) {
-			// Download failed
+		try {
+			$response = (new Client())->get($this->remoteAssetUrl);
+		} catch(\Exception $e) {
 			return;
 		}
+
+		if (200 !== $response->getStatusCode()) {
+			return;
+		}
+
+		$contents = $response->getBody();
 
 		Storage::disk('public')->put($this->filename, $contents);
 
