@@ -8,7 +8,7 @@ they can be self hosted.
 Install the package with composer:
 
 ```
-composer require rosswintle\laravel-asset-cache
+composer require rosswintle/laravel-asset-cache -dev
 ```
 
 Cached assets are stored in and served from the `public` file storage "disk". You will need to have symlinked your `public/storage` directory to `storage/app/public` as per the [Laravel docs](https://laravel.com/docs/6.x/filesystem#the-public-disk) using:
@@ -104,7 +104,7 @@ Feel free to contribute tests if you know how.
 ## Roadmap
 
 * Better use of Guzzle - can it send straight to the file?
-* Configuration for, for example, cache duration, or use fo different CDNs
+* Configuration for, for example, cache duration, or use of different CDNs
 * Auto-discovery of "main" file for a package
 * Automatic asynchronous cache refreshing (is this possible?)
 * Add some slight randomisation (plus or minus a few minutes at random) of cache times so that one person doesn't get ALL the assets re-cached in one request.
