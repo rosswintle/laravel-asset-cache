@@ -58,7 +58,7 @@ This is more flexible as you can add your own attributes to the tag that refers 
 You can also use this method for CSS:
 
 ```
-<link rel="stylesheet" href="{{ LaravelAssetCache::cachedAssetUrl('tailwindcss', '1.1.4', 'dist/tailwind.min.css') }}"></script>
+<link rel="stylesheet" href="{{ LaravelAssetCache::cachedAssetUrl('tailwindcss', '1.1.4', 'dist/tailwind.min.css') }}">
 ```
 
 ## What does this do?
