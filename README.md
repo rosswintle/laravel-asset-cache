@@ -3,6 +3,8 @@
 A Laravel package that automates downloading CSS and JS assets from CDNs so that
 they can be self hosted.
 
+[Why shoud I do this?](https://rosswintle.uk/2020/02/laravel-statamic-asset-cacher-for-js-css-dependencies/) <- Long-read!
+
 ## Installation
 
 Install the package with composer:
@@ -26,12 +28,12 @@ Be sure to do this in ALL environments: local, staging, and production.
 If you just want a `<script>` tag for a JavaScript asset then you can use the blade directive
 
 ```
-@jscript(<package_name>, <version>, <filename>)
+@jscript(<package>, <version>, <file>)
 ```
 
-* `package_name` is the name of an npm package (currently only npm is supported via jsdelivr.net)
+* `package` is the name of an npm package (currently only npm is supported via jsdelivr.net)
 * `version` is a version constraint such as `1.9.0`. Semantic versioning is assumed. You can use `1.9` to get the latest `1.9.x` version as per the [jsdelivr docs](https://www.jsdelivr.com/features) but this is not recommended in production environments
-* `filename` is the path and filename (with extension) for the asset that you want relative to the package's root. For example `dist/alpine.js`
+* `file` is the path and filename (with extension) for the asset that you want relative to the package's root. For example `dist/alpine.js`
 
 _Example_
 
@@ -44,7 +46,7 @@ _Example_
 A more flexible way is to use the static `cachedAssetUrl()` method of the `LaravelAssetCache` class, accessible through a facade as follows:
 
 ```
-<script defer src="{{ LaravelAssetCache::cachedAssetUrl(<package_name>, <version>, <filename>) }}"></script>
+<script defer src="{{ LaravelAssetCache::cachedAssetUrl(<package>, <version>, <file>) }}"></script>
 ```
 
 Parameter definitions are the same as for the Blade directive, above.
@@ -70,6 +72,8 @@ Using the Blade directive or `cachedAssetUrl` method:
 * Returns the URL of the cached, local asset
 
 ## What problem does this solve?
+
+There's [a FULL explanation on my blog](https://rosswintle.uk/2020/02/laravel-statamic-asset-cacher-for-js-css-dependencies/).
 
 It saves you having to manually download assets and include them in your project if you want to host them locally. 
 
