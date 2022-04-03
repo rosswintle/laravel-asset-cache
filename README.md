@@ -13,7 +13,7 @@ Install the package with composer:
 composer require rosswintle/laravel-asset-cache
 ```
 
-Cached assets are stored in and served from the `public` file storage "disk". You will need to have symlinked your `public/storage` directory to `storage/app/public` as per the [Laravel docs](https://laravel.com/docs/6.x/filesystem#the-public-disk) using:
+Cached assets are stored in and served from the `public` file storage "disk". You will need to have symlinked your `public/storage` directory to `storage/app/public` as per the [Laravel docs](https://laravel.com/docs/8.x/filesystem#the-public-disk) using:
 
 ```
 php artisan storage:link
@@ -75,7 +75,7 @@ Using the Blade directive or `cachedAssetUrl` method:
 
 There's [a FULL explanation on my blog](https://rosswintle.uk/2020/02/laravel-statamic-asset-cacher-for-js-css-dependencies/).
 
-It saves you having to manually download assets and include them in your project if you want to host them locally. 
+It saves you having to manually download assets and include them in your project if you want to host them locally.
 
 There are [various reasons](https://csswizardry.com/2019/05/self-host-your-static-assets/) why you may want to do this, such as avoiding having your users tracked, to avoid depending on third-party CDNs and there are possible performance benefits too.
 
@@ -112,7 +112,7 @@ Feel free to contribute tests if you know how.
 * Auto-discovery of "main" file for a package
 * Automatic asynchronous cache refreshing (is this possible?)
 * Add some slight randomisation (plus or minus a few minutes at random) of cache times so that one person doesn't get ALL the assets re-cached in one request.
-* cron job/cli for asynchronous cache refreshing 
+* cron job/cli for asynchronous cache refreshing
 
 ## Credits
 
