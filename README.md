@@ -7,6 +7,12 @@ they can be self hosted.
 
 ## Installation
 
+Use the following versions:
+
+* v1.x for Laravel 5.7, 5.8, 6.0 and 7.0 on PHP7
+* v2.x for Laravel 8.x and PHP 8.0
+* v3.x for Laravel 8.x/9.x and PHP 8.1/8.1
+
 Install the package with composer:
 
 ```
