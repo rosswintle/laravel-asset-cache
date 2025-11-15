@@ -9,9 +9,10 @@ they can be self hosted.
 
 Use the following versions:
 
-* v1.x for Laravel 5.7, 5.8, 6.0 and 7.0 on PHP7
-* v2.x for Laravel 8.x and PHP 8.0
-* v3.x for Laravel 8.x/9.x and PHP 8.1/8.1
+- v1.x for Laravel 5.7, 5.8, 6.0 and 7.0 on PHP7
+- v2.x for Laravel 8.x and PHP 8.0
+- v3.x for Laravel 8.x/9.x and PHP 8.1/8.2
+- v4.x for Laravel 10.x/11.x/12.x and PHP 8.0 - 8.4
 
 Install the package with composer:
 
@@ -19,7 +20,7 @@ Install the package with composer:
 composer require rosswintle/laravel-asset-cache
 ```
 
-Cached assets are stored in and served from the `public` file storage "disk". You will need to have symlinked your `public/storage` directory to `storage/app/public` as per the [Laravel docs](https://laravel.com/docs/8.x/filesystem#the-public-disk) using:
+Cached assets are stored in and served from the `public` file storage "disk". You will need to have symlinked your `public/storage` directory to `storage/app/public` as per the [Laravel docs](https://laravel.com/docs/12.x/filesystem#the-public-disk) using:
 
 ```
 php artisan storage:link
@@ -37,9 +38,9 @@ If you just want a `<script>` tag for a JavaScript asset then you can use the bl
 @jscript(<package>, <version>, <file>)
 ```
 
-* `package` is the name of an npm package (currently only npm is supported via jsdelivr.net)
-* `version` is a version constraint such as `1.9.0`. Semantic versioning is assumed. You can use `1.9` to get the latest `1.9.x` version as per the [jsdelivr docs](https://www.jsdelivr.com/features) but this is not recommended in production environments
-* `file` is the path and filename (with extension) for the asset that you want relative to the package's root. For example `dist/alpine.js`
+- `package` is the name of an npm package (currently only npm is supported via jsdelivr.net)
+- `version` is a version constraint such as `1.9.0`. Semantic versioning is assumed. You can use `1.9` to get the latest `1.9.x` version as per the [jsdelivr docs](https://www.jsdelivr.com/features) but this is not recommended in production environments
+- `file` is the path and filename (with extension) for the asset that you want relative to the package's root. For example `dist/alpine.js`
 
 _Example_
 
@@ -73,9 +74,9 @@ You can also use this method for CSS:
 
 Using the Blade directive or `cachedAssetUrl` method:
 
-* Downloads the asset from jsdelivr.net
-* Caches it in your apps `public` directory
-* Returns the URL of the cached, local asset
+- Downloads the asset from jsdelivr.net
+- Caches it in your apps `public` directory
+- Returns the URL of the cached, local asset
 
 ## What problem does this solve?
 
@@ -87,13 +88,7 @@ There are [various reasons](https://csswizardry.com/2019/05/self-host-your-stati
 
 I'm also on a mission to ditch npm and build process from simple projects, so this bit of automation seemed useful.
 
-If you dare specify an imprecise version constraint such as just `1.9` you can also get latest releases of dependencies without having to do anything! But all the big CDN's advise against this as it can break your site so use with __caution__ and avoid in production environments!!
-
-## Compatibility
-
-This package was built for and tested with Laravel 6.x, but should work on older and newer versions.
-
-Be aware that package auto-discovery only works in Laravel 5.5 and higher. With older versions you will have to add the service provider and alias manually. I'm not providing instructions because you should be running newer Laravel.
+If you dare specify an imprecise version constraint such as just `1.9` you can also get latest releases of dependencies without having to do anything! But all the big CDN's advise against this as it can break your site so use with **caution** and avoid in production environments!!
 
 ## Limitations
 
@@ -113,14 +108,14 @@ Feel free to contribute tests if you know how.
 
 ## Roadmap
 
-* Better use of Guzzle - can it send straight to the file?
-* Configuration for, for example, cache duration, or use of different CDNs
-* Auto-discovery of "main" file for a package
-* Automatic asynchronous cache refreshing (is this possible?)
-* Add some slight randomisation (plus or minus a few minutes at random) of cache times so that one person doesn't get ALL the assets re-cached in one request.
-* cron job/cli for asynchronous cache refreshing
+- Better use of Guzzle - can it send straight to the file?
+- Configuration for, for example, cache duration, or use of different CDNs
+- Auto-discovery of "main" file for a package
+- Automatic asynchronous cache refreshing (is this possible?)
+- Add some slight randomisation (plus or minus a few minutes at random) of cache times so that one person doesn't get ALL the assets re-cached in one request.
+- cron job/cli for asynchronous cache refreshing
 
 ## Credits
 
-* Thanks to [Marcel Pociot](https://twitter.com/marcelpociot) for his excellent [PHP Package Development](https://phppackagedevelopment.com/) course which helped me greatly in making this a package
-* Thanks to [Ben Furfie](https://twitter.com/frontendben), [Ryan Chandler](https://twitter.com/ryangjchandler) and [Duncan McClean](https://twitter.com/damcclean) for encouragement and feedback
+- Thanks to [Marcel Pociot](https://twitter.com/marcelpociot) for his excellent [PHP Package Development](https://phppackagedevelopment.com/) course which helped me greatly in making this a package
+- Thanks to [Ben Furfie](https://twitter.com/frontendben), [Ryan Chandler](https://twitter.com/ryangjchandler) and [Duncan McClean](https://twitter.com/damcclean) for encouragement and feedback
