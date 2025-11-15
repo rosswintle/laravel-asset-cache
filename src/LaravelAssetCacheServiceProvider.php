@@ -5,7 +5,6 @@ namespace RossWintle\LaravelAssetCache;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use RossWintle\LaravelAssetCache\LaravelAssetCache;
-use RossWintle\LaravelAssetCache\BladeExpressionParser;
 
 class LaravelAssetCacheServiceProvider extends ServiceProvider
 {
